@@ -1,3 +1,3 @@
-aa -> crypto minute-wise data
-bb -> crypto hour-wise data
-cc -> crypto day-wise data
+aa -> crypto minute-wise data<br>
+bb -> crypto hour-wise data<br>
+cc -> crypto day-wise data<br>
