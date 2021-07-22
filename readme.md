@@ -1,3 +1,3 @@
-aa -> crypto minute-wise data<br>
-bb -> crypto hour-wise data<br>
-cc -> crypto day-wise data<br>
+Bitcoin Market from 2017-08-17T00:00:00.000+00:00 
+
+with WebSocket for latest data
