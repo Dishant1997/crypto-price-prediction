@@ -9,6 +9,8 @@ import datetime
 api_key = 'YP4d181tEnrrwuYe8mvtUW8KDfJPHu4ff95aZ0uaPqcbA4zQXxozF9OphoeSxYce'
 api_secret = 'MnlDoLWYGhguf7WVfUfgnptpVd6fcCgph2Sgvx3NWQmNjgKQDFvukjuph3OHupwS'
 
+#  Function to get data of a market update for every 1minute from 2017-08-17T00:00:00
+
 def mainhistory():
     client = Client(api_key, api_secret)
 
@@ -46,6 +48,8 @@ def mainhistory():
 
         print("\n")
 
+
+# Websocket implementation from market update for every 1minute
 
 async def main():
     client = await AsyncClient.create()
