@@ -96,6 +96,12 @@ async def main():
 
 if __name__ == "__main__":
 
+    print()
+    print("---||Crypto Market History Collected till now||---")
     mainhistory()
+    print()
+    print("---||Crypto Market History Collected till now||---")
+    print()
+    print("---||WebSocket for one minute data started||---")
     loop = asyncio.get_event_loop()
     loop.run_until_complete(main())
