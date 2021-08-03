@@ -7,10 +7,11 @@ from selenium.common.exceptions import NoSuchElementException
 from msedge.selenium_tools import Edge, EdgeOptions
 import time
 import datetime
+import pymongo
 
 
-user = "abimortel@gmail.com"
-my_password = "abimortel@"
+user = "Username"
+my_password = "Password"
 
 def get_tweet_data(card):
     """Extract data from tweet card"""
@@ -126,11 +127,27 @@ def twitter():
     # close the web driver
     driver.close()
 
-    with open('bitcoin_tweets.csv', 'w', newline='', encoding='utf-8') as f:
-        header = ['UserName', 'Handle', 'Timestamp', 'Text', 'Emojis', 'Comments', 'Likes', 'Retweets']
-        writer = csv.writer(f)
-        writer.writerow(header)
-        writer.writerows(data)
+    # with open('bitcoin_tweets.csv', 'w', newline='', encoding='utf-8') as f:
+    #     header = ['UserName', 'Handle', 'Timestamp', 'Text', 'Emojis', 'Comments', 'Likes', 'Retweets']
+    #     writer = csv.writer(f)
+    #     writer.writerow(header)
+    #     writer.writerows(data)
+    #     print(type(data[0][0]))
+    myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+    mydb = myclient["crypto"]
+    mycol = mydb["bitcoin_tweets"]
+
+    for i in data:
+        jsn = {}
+        jsn["UserName"] = i[0]
+        jsn["Handle"] = i[1]
+        jsn["Timestamp"] = i[2]
+        jsn["Emojis"] = i[3]
+        jsn["Comments"] = i[4]
+        jsn["Likes"] = i[5]
+        jsn["Retweets"] = i[6]
+        print(jsn)
+        x = mycol.insert_one(jsn)
 
 if __name__ == "__main__":
 
