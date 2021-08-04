@@ -10,8 +10,8 @@ import datetime
 import pymongo
 
 
-user = "Username"
-my_password = "Password"
+user = "abimortel@gmail.com"
+my_password = "abimortel@"
 
 def get_tweet_data(card):
     """Extract data from tweet card"""
@@ -127,14 +127,10 @@ def twitter():
     # close the web driver
     driver.close()
 
-    # with open('bitcoin_tweets.csv', 'w', newline='', encoding='utf-8') as f:
-    #     header = ['UserName', 'Handle', 'Timestamp', 'Text', 'Emojis', 'Comments', 'Likes', 'Retweets']
-    #     writer = csv.writer(f)
-    #     writer.writerow(header)
-    #     writer.writerows(data)
-    #     print(type(data[0][0]))
+    # Data into MongoDB
+
     myclient = pymongo.MongoClient("mongodb://localhost:27017/")
-    mydb = myclient["crypto"]
+    mydb = myclient["cryptoCurrencyMarket"]
     mycol = mydb["bitcoin_tweets"]
 
     for i in data:
