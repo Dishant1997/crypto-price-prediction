@@ -6,8 +6,8 @@ import pymongo
 import datetime
 
 
-api_key = 'YP4d181tEnrrwuYe8mvtUW8KDfJPHu4ff95aZ0uaPqcbA4zQXxozF9OphoeSxYce'
-api_secret = 'MnlDoLWYGhguf7WVfUfgnptpVd6fcCgph2Sgvx3NWQmNjgKQDFvukjuph3OHupwS'
+api_key = ''
+api_secret = ''
 
 #  Function to get data of a market update for every 1minute from 2017-08-17T00:00:00
 
@@ -17,7 +17,7 @@ def mainhistory():
     res = client.get_historical_klines_generator('BTCUSDT', Client.KLINE_INTERVAL_1HOUR,1451624401,klines_type=HistoricalKlinesType.SPOT)
     print(res)
     myclient = pymongo.MongoClient("mongodb://localhost:27017/")
-    mydb = myclient["crypto"]
+    mydb = myclient["cryptoCurrencyMarket"]
     mycol = mydb["cryptodataBTC"]
     for i in res:
         print(i)
@@ -56,7 +56,7 @@ async def main():
     bm = BinanceSocketManager(client)
     ts = bm.kline_socket('BTCUSDT', interval=KLINE_INTERVAL_1MINUTE)
     myclient = pymongo.MongoClient("mongodb://localhost:27017/")
-    mydb = myclient["crypto"]
+    mydb = myclient["cryptoCurrencyMarket"]
     mycol = mydb["cryptodataBTC"]
     async with ts as tscm:
         while True:
