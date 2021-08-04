@@ -10,8 +10,8 @@ import datetime
 import pymongo
 
 
-user = "abimortel@gmail.com"
-my_password = "abimortel@"
+user = ""
+my_password = ""
 
 def get_tweet_data(card):
     """Extract data from tweet card"""
